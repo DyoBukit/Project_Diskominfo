@@ -1,7 +1,9 @@
-// src/contects/AuthLoginUser.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthUserContext = createContext(null);
+
+const USER_USERNAME = import.meta.env.VITE_USER_USERNAME || 'user';
+const USER_PASSWORD = import.meta.env.VITE_USER_PASSWORD || 'user123';
 
 export const AuthUserProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -9,22 +11,28 @@ export const AuthUserProvider = ({ children }) => {
   const [role, setRole] = useState(null);
 
   useEffect(() => {
-    const storedAuth = localStorage.getItem('userAuth');
-    if (storedAuth) {
-      const { isAuthenticated: authStatus, user: storedUser, role: storedRole } = JSON.parse(storedAuth);
-      setIsAuthenticated(authStatus);
-      setUser(storedUser);
-      setRole(storedRole);
+    try {
+      const storedAuth = localStorage.getItem('userAuth');
+      if (storedAuth) {
+        const { isAuthenticated: authStatus, user: storedUser, role: storedRole } = JSON.parse(storedAuth);
+        setIsAuthenticated(authStatus);
+        setUser(storedUser);
+        setRole(storedRole);
+      }
+    } catch (error) {
+      console.error('Gagal memuat data userAuth dari localStorage', error);
+      localStorage.removeItem('userAuth');
     }
   }, []);
 
   const login = async (username, password) => {
     if (username === 'user' && password === 'user123') {
-      const userData = { username: 'standard_user', role: 'user' };
+      const userData = { username, role: 'user' };
       setIsAuthenticated(true);
       setUser(userData);
       setRole('user');
       localStorage.setItem('userAuth', JSON.stringify({ isAuthenticated: true, user: userData, role: 'user' }));
+      localStorage.removeItem('adminAuth');
       return true;
     }
     return false;
@@ -35,6 +43,7 @@ export const AuthUserProvider = ({ children }) => {
     setUser(null);
     setRole(null);
     localStorage.removeItem('userAuth');
+    localStorage.removeItem('adminAuth'); // bersihkan juga
   };
 
   return (

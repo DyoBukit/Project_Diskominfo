@@ -1,4 +1,3 @@
-// src/pages/Admin/Validation.jsx (Sangat Disarankan pindah ke src/utils/validation.js)
 export const validateEmail = (email) => {
   if (!email) return "Email is required.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

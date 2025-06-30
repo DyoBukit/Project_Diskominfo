@@ -4,19 +4,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthLoginAdmin';
 import { useAuthUser } from '../contexts/AuthLoginUser';
 
-function Navbar({ role }) {
+function Navbar() {
   const navigate = useNavigate();
-  const { logout: adminLogout } = useAuth();
-  const { logout: userLogout } = useAuthUser();
+
+  const { logout: adminLogout, role: adminRole, isAuthenticated: isAdmin } = useAuth();
+  const { logout: userLogout, role: userRole, isAuthenticated: isUser } = useAuthUser();
 
   const handleLogout = () => {
-    if (role === 'admin') {
-      adminLogout();
-    } else if (role === 'user') {
-      userLogout();
-    }
+    adminLogout(); // panggil dua-duanya untuk jaga-jaga
+    userLogout();
     navigate('/login');
   };
+
+  // Tentukan role yang sedang aktif
+  const role = isAdmin ? adminRole : isUser ? userRole : null;
+
 
   return (
     <nav className="bg-bg-dark text-white p-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center shadow-lg">

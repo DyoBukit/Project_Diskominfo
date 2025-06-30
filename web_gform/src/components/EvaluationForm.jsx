@@ -73,6 +73,7 @@ function EvaluationForm({ onSubmit }) {
     e.preventDefault();
     if (validateForm()) {
       onSubmit(formData);
+      setFormData({});
     } else {
       console.log('Form has errors:', errors);
       // Scroll to first error or highlight them

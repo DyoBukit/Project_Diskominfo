@@ -14,6 +14,7 @@ function LoginPage() {
   const navigate = useNavigate();
   const { login: adminLogin } = useAuth();
   const { login: userLogin } = useAuthUser();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +56,10 @@ function LoginPage() {
       >
         <h2 className="text-primary text-4xl font-bold mb-8">Login</h2>
         <div className="mb-6 flex justify-center gap-4">
-          <label className="cursor-pointer p-3 sm:px-6 sm:py-3 border-2 border-primary rounded-lg text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white">
+          <label
+            className={`cursor-pointer p-3 sm:px-6 sm:py-3 border-2 rounded-lg font-semibold transition-all duration-300
+            ${role === 'user' ? 'bg-black text-white border-black scale-105 shadow-md' : 'bg-white text-black hover:bg-gray-200'}`}
+          >
             <input
               type="radio"
               value="user"
@@ -65,7 +69,10 @@ function LoginPage() {
             />
             User
           </label>
-          <label className="cursor-pointer p-3 sm:px-6 sm:py-3 border-2 border-primary rounded-lg text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white">
+          <label
+            className={`cursor-pointer p-3 sm:px-6 sm:py-3 border-2 rounded-lg font-semibold transition-all duration-300
+            ${role === 'admin' ? 'bg-black text-white border-black scale-105 shadow-md' : 'bg-white text-black hover:bg-gray-200'}`}
+          >
             <input
               type="radio"
               value="admin"
@@ -93,7 +100,7 @@ function LoginPage() {
           placeholder="Enter your password"
         />
         {error && <ErrorMessage message={error} />}
-        <button
+        <button disabled={loading}
           type="submit"
           className="bg-black text-white cursor-pointer w-full py-3 px-6 mt-6 rounded-lg text-xl font-semibold hover:bg-secondary transition-all duration-300"
         >

@@ -11,10 +11,10 @@ function DashboardAdmin() {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-bg-light flex flex-col">
+    <div className="min-h-screen bg-gray-800 flex flex-col">
       <Navbar role="admin" />
       <main className="flex-grow p-8 md:p-12 max-w-6xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-bold text-dark mb-10 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-10 text-center">
           Welcome, <span className="text-primary">{user?.username || 'Admin'}</span>!
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

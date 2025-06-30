@@ -1,13 +1,7 @@
-// src/components/ErrorMessage.jsx
 import React from 'react';
 
-const ErrorMessage = ({ message }) => {
-  if (!message) return null;
-  return (
-    <p className="text-error text-sm mt-1 text-left">
-      {message}
-    </p>
-  );
-};
+const ErrorMessage = ({ message }) => (
+  <p className="text-red-500 text-sm mt-2">{message}</p>
+);
 
 export default ErrorMessage;

@@ -4,6 +4,8 @@ import Navbar from '../../components/Navbar';
 import UserTable from './UserTable';
 import InputField from '../../components/InputField';
 import ErrorMessage from '../../components/ErrorMessage'; // Import ErrorMessage
+import { validateEmail, validatePassword, validateRequired } from '../../utils/validation';
+
 
 const DUMMY_USERS = [
   { id: 1, username: 'user1', email: 'user1@example.com', role: 'user' },
@@ -20,37 +22,38 @@ function ManageUsersPage() {
   const [formError, setFormError] = useState('');
 
   const handleAddUser = (e) => {
-    e.preventDefault();
-    setFormError('');
+  e.preventDefault();
+  setFormError('');
 
-    if (!newUsername || !newEmail || !newPassword || !newRole) {
-      setFormError('All fields are required.');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
-        setFormError('Invalid email format.');
-        return;
-    }
+  const usernameError = validateRequired(newUsername, 'Username');
+  const emailError = validateEmail(newEmail);
+  const passwordError = validatePassword(newPassword);
+  const roleError = validateRequired(newRole, 'Role');
 
-    const newUser = {
-      id: users.length + 1,
-      username: newUsername,
-      email: newEmail,
-      role: newRole,
-    };
-    setUsers([...users, newUser]);
-    setNewUsername('');
-    setNewEmail('');
-    setNewPassword('');
-    setNewRole('user');
+  if (usernameError || emailError || passwordError || roleError) {
+    setFormError(usernameError || emailError || passwordError || roleError);
+    return;
+  }
+
+  const newUser = {
+    id: users.length + 1,
+    username: newUsername,
+    email: newEmail,
+    role: newRole,
   };
+  setUsers([...users, newUser]);
+  setNewUsername('');
+  setNewEmail('');
+  setNewPassword('');
+  setNewRole('user');
+};
 
   const handleDeleteUser = (id) => {
     setUsers(users.filter(user => user.id !== id));
   };
 
   return (
-    <div className="min-h-screen bg-bg-light flex flex-col">
+    <div className="min-h-screen bg-gray-700 flex flex-col">
       <Navbar role="admin" />
       <main className="flex-grow p-8 md:p-12 max-w-6xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl font-bold text-dark mb-8 text-center">

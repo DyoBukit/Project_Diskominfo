@@ -16,6 +16,8 @@ const InputField = ({ label, type = 'text', id, value, onChange, placeholder, er
         </label>
       )}
       <InputComponent
+        aria-invalid={!!error}
+        aria-describedby={error ? `${id}-error` : undefined}
         type={type === 'textarea' ? undefined : type}
         id={id}
         name={id} // Penting untuk form handling
@@ -25,7 +27,7 @@ const InputField = ({ label, type = 'text', id, value, onChange, placeholder, er
         className={`${commonClasses} ${errorClass} ${type === 'textarea' ? 'min-h-[100px] resize-y' : ''}`}
         {...props}
       />
-      {error && <ErrorMessage message={error} />}
+      {error && <ErrorMessage message={error} id={`${id}-error`} />}
     </div>
   );
 };
