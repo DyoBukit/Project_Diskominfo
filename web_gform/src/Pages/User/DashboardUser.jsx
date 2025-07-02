@@ -1,5 +1,6 @@
 // src/pages/User/DashboardUser.jsx
 import React from 'react';
+import { HiClipboardList } from 'react-icons/hi'; // Ikon tema evaluasi
 import Navbar from '../../components/Navbar';
 import { useAuthUser } from '../../contexts/AuthLoginUser';
 import { Link } from 'react-router-dom';
@@ -8,17 +9,37 @@ function DashboardUser() {
   const { user } = useAuthUser();
 
   return (
-    <div className="min-h-screen bg-gray-800 flex flex-col">
+    <div className="py-6 min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex flex-col">
       <Navbar role="user" />
-      <main className="flex-grow p-8 md:p-12 max-w-3xl mx-auto w-full text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-10">
-          Hello,   <span className="text-primary">{user?.username || 'User'}</span>!
+      <main className="flex-grow p-8 md:p-12 max-w-3xl mx-auto w-full text-center text-white">
+        {/* Sapaan */}
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          Halo, <span className="text-primary">{user?.username || 'User'}</span> 👋
         </h1>
-        <div className="bg-white p-8 md:p-12 rounded-xl shadow-lg mt-8">
-          <h2 className="text-accent text-center text-3xl md:text-4xl font-bold mb-4">EVALUASI SISTEM PEMERINTAHAN BERBASIS ELEKTRONIK (SPBE) TAHUN 2024</h2>
+
+        {/* Box utama */}
+        <div className="bg-white text-gray-800 p-8 md:p-12 rounded-xl shadow-xl mt-6">
+          {/* Ikon */}
+          <HiClipboardList className="text-blue-600 text-6xl mb-4 mx-auto" />
+
+          {/* Judul */}
+          <h2 className="text-center text-2xl md:text-3xl font-bold mb-2">
+            EVALUASI SISTEM PEMERINTAHAN BERBASIS ELEKTRONIK (SPBE)
+          </h2>
+
+          {/* Tahun */}
+          <p className="text-center text-lg font-semibold text-blue-600 mb-2">Tahun 2024</p>
+
+          {/* Deskripsi */}
+          <p className="text-gray-600 text-center text-base mb-6 leading-relaxed">
+            Silakan lengkapi evaluasi mandiri SPBE sesuai dengan unit kerja Anda.
+            Data yang dikumpulkan akan menjadi bagian dari penilaian digitalisasi pemerintah daerah.
+          </p>
+
+          {/* Tombol Aksi */}
           <Link
             to="/user/evaluasi"
-            className="inline-block bg-black text-white py-3 px-8 rounded-lg text-xl font-semibold hover:bg-secondary transition-colors duration-300 transform hover:-translate-y-1"
+            className="inline-block bg-blue-700 text-white py-3 px-8 rounded-lg text-lg font-semibold hover:bg-blue-800 transition-colors duration-300 transform hover:-translate-y-1"
           >
             Mulai Evaluasi Sekarang
           </Link>

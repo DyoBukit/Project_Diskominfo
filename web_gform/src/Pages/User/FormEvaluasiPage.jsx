@@ -23,12 +23,9 @@ function FormEvaluasiPage() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-900 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex flex-col py-6">
       <Navbar role="user" />
       <main className="flex-grow p-8 md:p-12 max-w-4xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-bold text-dark mb-8 text-center">
-          Isi <span className="text-primary">Form Evaluasi</span>
-        </h1>
         {isSubmitting ? (
           <p className="text-white text-center text-xl">Mengirim data...</p>
         ) : (

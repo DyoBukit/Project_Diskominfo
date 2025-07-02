@@ -55,34 +55,6 @@ function LoginPage() {
         // Keyframe fade-in bisa didefinisikan di global CSS (index.css) atau sebagai utility khusus di tailwind.config.js
       >
         <h2 className="text-primary text-4xl font-bold mb-8">Login</h2>
-        <div className="mb-6 flex justify-center gap-4">
-          <label
-            className={`cursor-pointer p-3 sm:px-6 sm:py-3 border-2 rounded-lg font-semibold transition-all duration-300
-            ${role === 'user' ? 'bg-black text-white border-black scale-105 shadow-md' : 'bg-white text-black hover:bg-gray-200'}`}
-          >
-            <input
-              type="radio"
-              value="user"
-              checked={role === 'user'}
-              onChange={() => setRole('user')}
-              className="hidden"
-            />
-            User
-          </label>
-          <label
-            className={`cursor-pointer p-3 sm:px-6 sm:py-3 border-2 rounded-lg font-semibold transition-all duration-300
-            ${role === 'admin' ? 'bg-black text-white border-black scale-105 shadow-md' : 'bg-white text-black hover:bg-gray-200'}`}
-          >
-            <input
-              type="radio"
-              value="admin"
-              checked={role === 'admin'}
-              onChange={() => setRole('admin')}
-              className="hidden"
-            />
-            Admin
-          </label>
-        </div>
         <InputField
           label="Username"
           type="text"
