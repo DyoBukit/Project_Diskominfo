@@ -10,7 +10,6 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [role, setRole] = useState('user');
   const navigate = useNavigate();
   const { login: adminLogin } = useAuth();
   const { login: userLogin } = useAuthUser();
@@ -19,31 +18,35 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
     if (!username || !password) {
       setError('Username and password are required.');
+      setLoading(false);
       return;
     }
 
     try {
-      if (role === 'admin') {
+      if (username.toLowerCase() === 'admin') {
         const success = await adminLogin(username, password);
         if (success) {
           navigate('/admin/dashboard');
         } else {
           setError('Invalid admin credentials.');
         }
-      } else { // role === 'user'
+      } else {
         const success = await userLogin(username, password);
         if (success) {
           navigate('/user/dashboard');
         } else {
-          setError('Invalid.');
+          setError('Invalid user credentials.');
         }
       }
     } catch (err) {
       setError('An error occurred during login. Please try again.');
       console.error('Login error:', err);
+    } finally {
+      setLoading(false);
     }
   };
 

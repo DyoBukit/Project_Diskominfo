@@ -53,10 +53,10 @@ function ManageUsersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-700 flex flex-col">
+    <div className="py-6 min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex flex-col">
       <Navbar role="admin" />
       <main className="flex-grow p-8 md:p-12 max-w-6xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-bold text-dark mb-8 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold py-5 text-white mb-8 text-center">
           Manage <span className="text-primary">Users</span>
         </h1>
 
@@ -98,13 +98,12 @@ function ManageUsersPage() {
             >
               <option value="user">User</option>
               <option value="admin">Admin</option>
-              <option value="moderator">Moderator</option>
             </select>
           </div>
           {formError && <ErrorMessage message={formError} className="col-span-full" />}
           <button
             type="submit"
-            className="col-span-full bg-accent text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+            className="col-span-full bg-blue-300 text-black py-3 px-6 rounded-lg text-lg font-semibold hover:bg-blue-800 transition-colors duration-300"
           >
             Add User
           </button>

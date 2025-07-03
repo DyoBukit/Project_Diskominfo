@@ -7,19 +7,19 @@ function UserTable({ users, onDelete }) {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-primary">
           <tr>
-            <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+            <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider">
               ID
             </th>
-            <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+            <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider">
               Username
             </th>
-            <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+            <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider">
               Email
             </th>
-            <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+            <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider">
               Role
             </th>
-            <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+            <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider">
               Actions
             </th>
           </tr>
@@ -34,7 +34,7 @@ function UserTable({ users, onDelete }) {
               <td className="px-6 py-4 whitespace-nowrap">
                 <button
                   onClick={() => onDelete(user.id)}
-                  className="bg-error text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-red-700 transition-colors duration-300"
+                  className="bg-red-300 text-black font-semibold py-2 px-4 rounded-md text-sm font-medium hover:bg-red-800 transition-colors duration-300"
                 >
                   Delete
                 </button>

@@ -57,7 +57,7 @@ function EvaluationForm({ onSubmit }) {
         <h1 className="text-2xl font-bold mt-2 mb-4">
           EVALUASI SISTEM PEMERINTAHAN BERBASIS ELEKTRONIK (SPBE) TAHUN 2024
         </h1>
-        <p className="text-gray-500 text-sm">Formulir Upload Data Dukung Evaluasi Mandiri SPBE Tahun 2023</p>
+        <p className="text-gray-500 text-sm italic font-semibold">Formulir Upload Data Dukung Evaluasi Mandiri SPBE Tahun 2023</p>
         <img
           src= {logo}
           alt="Header SPBE"

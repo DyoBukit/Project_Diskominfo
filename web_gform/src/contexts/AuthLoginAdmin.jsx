@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       setUser(adminData);
       setRole('admin');
       localStorage.setItem('adminAuth', JSON.stringify({ isAuthenticated: true, user: adminData, role: 'admin' }));
-      localStorage.removeItem('userAuth');
+      localStorage.removeItem('userAuth')
       return true;
     }
     return false;

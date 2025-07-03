@@ -21,7 +21,7 @@ function Navbar() {
 
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 text-white px-6 py-4 flex flex-col sm:flex-row justify-between items-center shadow-md">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 text-slate-300 px-6 py-4 flex flex-col sm:flex-row justify-between items-center shadow-md">
       <Link to="/" className="text-3xl font-bold text-white uppercase tracking-wider mb-4 sm:mb-0">
         Eval<span className="text-blue-400">App</span>
       </Link>
@@ -29,7 +29,7 @@ function Navbar() {
         {role === 'admin' && (
           <>
             <li><Link to="/admin/dashboard" className="text-lg py-2 px-4 rounded-lg hover:bg-white/10 transition-colors duration-300">Dashboard</Link></li>
-            <li><Link to="/admin/users" className="text-lg py -2 px-4 rounded-lg hover:bg-white/10 transition-colors duration-300">Manage Users</Link></li>
+            <li><Link to="/admin/users" className="text-lg py-2 px-4 rounded-lg hover:bg-white/10 transition-colors duration-300">Manage Users</Link></li>
             <li><Link to="/admin/forms" className="text-lg py-2 px-4 rounded-lg hover:bg-white/10 transition-colors duration-300">Manage Forms</Link></li>
           </>
         )}
@@ -42,7 +42,7 @@ function Navbar() {
         <li>
           <button
             onClick={handleLogout}
-            className="cursor-pointer border border-white px-4 py-1 rounded hover:bg-white hover:text-black transition duration-300"
+            className="cursor-pointer text-lg border border-white px-4 py-2 py-1 rounded hover:bg-white hover:text-black transition duration-300"
           >
             Logout
           </button>

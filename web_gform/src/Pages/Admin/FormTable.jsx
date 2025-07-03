@@ -20,29 +20,29 @@ function FormTable() {
   };
 
   return (
-    <div className="min-h-screen bg-bg-light flex flex-col">
+    <div className="py-6 min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex flex-col">
       <Navbar role="admin" />
       <main className="flex-grow p-8 md:p-12 max-w-6xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-bold text-dark mb-8 text-center">
+        <h1 className="text-4xl md:text-5xl py-5 font-bold text-white mb-8 text-center">
           Manage <span className="text-secondary">Evaluation Forms</span>
         </h1>
         <div className="overflow-x-auto mt-8 bg-white rounded-xl shadow-lg">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-secondary">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                <th scope="col" className="px-6 py-4 text-left text-lx font-bold text-black uppercase tracking-wider">
                   ID
                 </th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                <th scope="col" className="px-6 py-4 text-left text-lx font-bold text-black uppercase tracking-wider">
                   Title
                 </th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                <th scope="col" className="px-6 py-4 text-left text-lx font-bold text-black uppercase tracking-wider">
                   Status
                 </th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                <th scope="col" className="px-6 py-4 text-left text-lx font-bold text-black uppercase tracking-wider">
                   Created Date
                 </th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                <th scope="col" className="px-6 py-4 text-left text-lx font-bold text-black uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -57,13 +57,13 @@ function FormTable() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <button
                       onClick={() => handleEditForm(form.id)}
-                      className="bg-accent text-white py-2 px-4 rounded-md text-sm font-medium mr-2 hover:bg-blue-700 transition-colors duration-300"
+                      className="bg-gray-300 text-black py-2 px-4 rounded-md text-sm font-medium mr-2 hover:bg-blue-800 transition-colors duration-300"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteForm(form.id)}
-                      className="bg-error text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-red-700 transition-colors duration-300"
+                      className="bg-red-200 text-black py-2 px-4 rounded-md text-sm font-medium hover:bg-red-800 transition-colors duration-300"
                     >
                       Delete
                     </button>
